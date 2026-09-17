@@ -6,7 +6,8 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class RoomService {
-  private apiUrl = 'http://localhost:8081';
+  // private apiUrl = 'http://localhost:8081';
+  private apiUrl = 'https://hotel-backend-1-0.onrender.com';
 
   constructor(private http: HttpClient) {}
 
@@ -17,7 +18,7 @@ export class RoomService {
     checkOut: string,
   ) {
     return this.http.get<any[]>(
-      `http://localhost:8081/hotel/${hotelId}/rooms`,
+      `https://hotel-backend-1-0.onrender.com/hotel/${hotelId}/rooms`,
       {
         params: {
           guests,

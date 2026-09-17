@@ -103,17 +103,19 @@ export class ProfileComponent implements OnInit {
     this.loading = true;
     this.error = null;
 
-    this.http.get<User>('http://localhost:8081/user').subscribe({
-      next: (data) => {
-        this.user = data;
-        this.loading = false;
-      },
-      error: (err) => {
-        console.error('Error loading user:', err);
-        this.error = 'Nie udało się pobrać danych użytkownika';
-        this.loading = false;
-      },
-    });
+    this.http
+      .get<User>('https://hotel-backend-1-0.onrender.com/user')
+      .subscribe({
+        next: (data) => {
+          this.user = data;
+          this.loading = false;
+        },
+        error: (err) => {
+          console.error('Error loading user:', err);
+          this.error = 'Nie udało się pobrać danych użytkownika';
+          this.loading = false;
+        },
+      });
   }
 
   loadHistoryReservations() {
@@ -210,18 +212,20 @@ export class ProfileComponent implements OnInit {
     this.loading = true;
     this.error = null;
 
-    this.http.put<User>('http://localhost:8081/user', this.user).subscribe({
-      next: (updatedUser) => {
-        this.user = updatedUser;
-        Object.keys(this.editMode).forEach((k) => (this.editMode[k] = false));
-        this.loading = false;
-      },
-      error: (err) => {
-        console.error('Błąd zapisu', err);
-        this.error = 'Nie udało się zapisać danych';
-        this.loading = false;
-      },
-    });
+    this.http
+      .put<User>('https://hotel-backend-1-0.onrender.com/user', this.user)
+      .subscribe({
+        next: (updatedUser) => {
+          this.user = updatedUser;
+          Object.keys(this.editMode).forEach((k) => (this.editMode[k] = false));
+          this.loading = false;
+        },
+        error: (err) => {
+          console.error('Błąd zapisu', err);
+          this.error = 'Nie udało się zapisać danych';
+          this.loading = false;
+        },
+      });
   }
 
   formatDate(date: string): string {
