@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 export interface FavoriteHotel {
   id: number;
@@ -10,9 +11,9 @@ export interface FavoriteHotel {
 
 @Injectable({ providedIn: 'root' })
 export class FavoriteService {
-  // private api = 'http://localhost:8081/favorites';
-  private apiUrl = 'https://hotel-backend-1-0.onrender.com/favorites';
-
+    private apiUrl = environment.baseApiUrl+"/favorites";
+  
+  
   constructor(private http: HttpClient) {}
 
   getFavorites(): Observable<FavoriteHotel[]> {

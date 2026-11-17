@@ -3,13 +3,14 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { ReservationDTO } from '../models/reservation.model';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ReservationService {
-  // private apiUrl = 'http://localhost:8081';
-  private apiUrl = 'https://hotel-backend-1-0.onrender.com';
+    private apiUrl = environment.baseApiUrl;
+  
 
   constructor(private http: HttpClient) {}
 
