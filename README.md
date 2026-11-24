@@ -241,7 +241,7 @@ Users can create an account, log in, and access password recovery from the login
 
 |                   Login                   |                    Registration                     |
 | :---------------------------------------: | :-------------------------------------------------: |
-| ![Login](docs/screenshots/Login-page.png) | ![Registration](docs/screenshots/register-page.png) |
+| ![Login](docs/screenshots/login-page.png) | ![Registration](docs/screenshots/register-page.png) |
 
 #### Email Account Activation
 
