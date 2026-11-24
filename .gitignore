@@ -1,15 +1,18 @@
-# See http://help.github.com/ignore-files/ for more about ignoring files.
-
 # Compiled output
-/dist
-/tmp
-/out-tsc
-/bazel-out
+/dist/
+/tmp/
+/out-tsc/
+/bazel-out/
 
-# Node
-/node_modules
-npm-debug.log
-yarn-error.log
+# Node.js
+/node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Angular cache
+/.angular/cache/
 
 # IDEs and editors
 .idea/
@@ -26,17 +29,24 @@ yarn-error.log
 !.vscode/tasks.json
 !.vscode/launch.json
 !.vscode/extensions.json
-.history/*
+.history/
+
+# Testing and coverage
+/coverage/
+testem.log
+
+# Environment variables
+.env
+.env.*
+!.env.example
 
 # Miscellaneous
-/.angular/cache
 .sass-cache/
 /connect.lock
-/coverage
 /libpeerconnection.log
-testem.log
 /typings
 
 # System files
 .DS_Store
 Thumbs.db
+Desktop.ini

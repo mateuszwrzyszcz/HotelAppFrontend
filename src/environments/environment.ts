@@ -4,9 +4,8 @@
 
 export const environment = {
   production: false,
-  baseApiUrl: 'ttp://localhost:8081/',
+  baseApiUrl: 'http://localhost:8081',
 };
-
 
 /*
  * For easier debugging in development mode, you can import the following file

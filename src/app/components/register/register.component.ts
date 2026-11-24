@@ -43,13 +43,9 @@ export class RegisterComponent {
     this.serverMessage = 'Na Twój email został wysłany link aktywacyjny.';
 
     this.http
-      .post(
-        'https://hotel-backend-1-0.onrender.com/register',
-        this.registerForm.value,
-        {
-          responseType: 'text',
-        },
-      )
+      .post('http://localhost:8081/register', this.registerForm.value, {
+        responseType: 'text',
+      })
       .subscribe({
         next: (res: string) => {
           console.log('Rejestracja wysłana:', res);

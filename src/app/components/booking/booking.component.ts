@@ -70,41 +70,37 @@ export class BookingComponent implements OnInit {
   loadData(): void {
     this.loading = true;
 
-    this.http.get('https://hotel-backend-1-0.onrender.com/user').subscribe({
+    this.http.get('http://localhost:8081/user').subscribe({
       next: (user) => {
         this.user = user;
       },
       error: (err) => console.error('Error loading user:', err),
     });
 
-    this.http
-      .get(`https://hotel-backend-1-0.onrender.com/room/${this.roomId}`)
-      .subscribe({
-        next: (room: any) => {
-          this.room = room;
-          this.calculateTotalPrice();
-          this.loadHotelData();
-        },
-        error: (err) => {
-          this.error = 'Nie udało się pobrać danych pokoju';
-          this.loading = false;
-        },
-      });
+    this.http.get(`http://localhost:8081/room/${this.roomId}`).subscribe({
+      next: (room: any) => {
+        this.room = room;
+        this.calculateTotalPrice();
+        this.loadHotelData();
+      },
+      error: (err) => {
+        this.error = 'Nie udało się pobrać danych pokoju';
+        this.loading = false;
+      },
+    });
   }
 
   loadHotelData(): void {
-    this.http
-      .get(`https://hotel-backend-1-0.onrender.com/hotels/${this.hotelId}`)
-      .subscribe({
-        next: (hotel) => {
-          this.hotel = hotel;
-          this.loading = false;
-        },
-        error: (err) => {
-          console.error('Error loading hotel:', err);
-          this.loading = false;
-        },
-      });
+    this.http.get(`http://localhost:8081/hotels/${this.hotelId}`).subscribe({
+      next: (hotel) => {
+        this.hotel = hotel;
+        this.loading = false;
+      },
+      error: (err) => {
+        console.error('Error loading hotel:', err);
+        this.loading = false;
+      },
+    });
   }
 
   calculateTotalPrice(): void {
@@ -143,10 +139,7 @@ export class BookingComponent implements OnInit {
     };
 
     this.http
-      .post(
-        'https://hotel-backend-1-0.onrender.com/reservations',
-        reservationRequest,
-      )
+      .post('http://localhost:8081/reservations', reservationRequest)
       .subscribe({
         next: (response: any) => {
           this.bookingConfirmed = true;
